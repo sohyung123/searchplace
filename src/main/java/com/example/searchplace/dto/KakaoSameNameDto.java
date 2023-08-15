@@ -1,5 +1,6 @@
 package com.example.searchplace.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -14,6 +15,7 @@ public class KakaoSameNameDto {
     private String[] region;
 
     //인식된 지역 리스트 중, 현재 검색에 사용된 지역 정보
+    @JsonProperty(value="selected_region")
     private String selectedRegion;
 
 }

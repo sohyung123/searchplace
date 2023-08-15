@@ -5,9 +5,10 @@ import lombok.Data;
 
 @Data
 @Builder
-public class KakaoParameterDto {
+public class NaverParameterDto {
 
     private String query;
-    private Integer size;
+
+    private Integer display;
 
 }
