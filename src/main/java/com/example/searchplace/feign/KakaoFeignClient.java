@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "kakao",url = "https://dapi.kakao.com")
+@FeignClient(name = "kakao",url = "https://dapi.kakao.com")
 public interface KakaoFeignClient {
 
     @GetMapping(value = "v2/local/search/keyword.json",headers = "Authorization=KakaoAK 51fd6e1b5fb862ffa1f71098737702e4")

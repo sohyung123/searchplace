@@ -44,7 +44,7 @@ public class SaveKeywordService {
             return target;
         }
         catch (RuntimeException e) {
-            log.info("{}라는 키워드로는 검색된적 없습니다.",keyword);
+            log.info("{}(이)라는 키워드로는 검색된적 없습니다.",keyword);
             Keyword target = Keyword.builder()
                     .keywordName(keyword)
                     .count(1)
