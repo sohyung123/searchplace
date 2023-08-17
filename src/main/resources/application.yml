@@ -38,3 +38,25 @@ management:
     web:
       exposure:
         include: "*"
+
+#개인설정 값
+searchplace:
+  feign:
+    kakao:
+      name: kakao
+      url: https://dapi.kakao.com
+      header1:
+        key: Authorization
+        value: KakaoAK 51fd6e1b5fb862ffa1f71098737702e4
+    naver:
+      name: naver
+      url: https://openapi.naver.com
+      header1:
+        key: X-Naver-Client-Id
+        value: CwNB3MspiqwJBWYMuUYT
+      header2:
+        key: X-Naver-Client-Secret
+        value: iuGJFBep9H
+    keywordList:
+      name: keyword
+      url: http://localhost:8081

@@ -8,6 +8,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 public class EventListenerAsyncConfig {
 
+
+    //SaveKeywordService의 saveKeywordData 메서드에서 사용하기 위한 비동기 설정.
     @Qualifier("eventListenerThreadExecutor")
     @Bean
     public ThreadPoolTaskExecutor threadExecutor() {

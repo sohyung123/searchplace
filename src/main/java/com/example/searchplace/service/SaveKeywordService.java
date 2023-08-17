@@ -11,6 +11,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -20,6 +22,7 @@ public class SaveKeywordService {
     @Qualifier("eventListenerThreadExecutor")
     private final ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
+    //SearchPlaceService에서 전달한 event를 받아 비동기로 실행.
     @Async("eventListenerThreadExecutor")
     @EventListener
     public void saveKeywordData(ParameterDto parameterDto) {
@@ -32,14 +35,16 @@ public class SaveKeywordService {
         }
     }
 
+    //특정 키워드가 호출된적 있는지 확인하는 메서드로, 호출될때마다 AtomicInteger인 newcount를 incrementAndGet()하여 1씩 증가하여 db에 저장
     private Keyword getTargetKeyword(ParameterDto parameterDto) {
         String keyword = parameterDto.getQuery();
         try {
             Keyword existKeyword = keywordRepository.findByKeywordName(keyword);
+            AtomicInteger newcount = new AtomicInteger(existKeyword.getCount().intValue());
             Keyword target = Keyword.builder()
                     .id(existKeyword.getId())
                     .keywordName(keyword)
-                    .count(existKeyword.getCount().intValue() + 1)
+                    .count(newcount.incrementAndGet())
                     .build();
             return target;
         }

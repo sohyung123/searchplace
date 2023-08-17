@@ -8,8 +8,8 @@ import com.example.searchplace.utils.Constants;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 @Slf4j
@@ -18,6 +18,8 @@ public class NaverDataService {
 
     private final NaverFeignClient naverFeignClient;
 
+    //naver open api 결과값은 Cache 처리하여, 반응성 향상
+    @Cacheable(value = "naverCache")
     public NaverResponseDto getNaverData(ParameterDto parameterDto) {
         NaverResponseDto naverResponseDto = new NaverResponseDto();
         try {
@@ -29,6 +31,7 @@ public class NaverDataService {
         }
         catch (FeignException e) {
             log.error("get naver Data Failed.", e.getMessage(),e);
+            naverResponseDto = null;
         }
         return naverResponseDto;
     }

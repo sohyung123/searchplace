@@ -8,8 +8,8 @@ import com.example.searchplace.utils.Constants;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 @Slf4j
@@ -18,6 +18,8 @@ public class KakaoDataService {
 
     private final KakaoFeignClient kakaoFeignClient;
 
+    //kakao open api 결과값은 Cache 처리하여, 반응성 향상
+    @Cacheable(value = "kakaoCache")
     public KakaoResponseDto getKakaoData(ParameterDto parameterDto) {
         KakaoResponseDto kakaoResponseDto = new KakaoResponseDto();
         try {
@@ -29,6 +31,7 @@ public class KakaoDataService {
         }
         catch (FeignException e) {
             log.error("get kakao Data Failed.", e.getMessage(),e);
+            kakaoResponseDto = null;
         }
         return kakaoResponseDto;
     }

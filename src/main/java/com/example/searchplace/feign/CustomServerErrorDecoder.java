@@ -11,6 +11,8 @@ import static java.lang.String.format;
 
 @Component
 public class CustomServerErrorDecoder implements ErrorDecoder {
+
+    //Feign 실패시, 500번대 서버 에러에 한정하여서만 Retry 하도록 설정
     @Override
     public Exception decode(String methodKey, Response response) {
         FeignException feignException = FeignException.errorStatus(methodKey, response);
