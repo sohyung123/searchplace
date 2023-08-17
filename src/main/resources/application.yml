@@ -47,16 +47,16 @@ searchplace:
       url: https://dapi.kakao.com
       header1:
         key: Authorization
-        value: KakaoAK 51fd6e1b5fb862ffa1f71098737702e4
+        value: ENC(ONWMWajeg0t6JoNu5Yn9sMsziRZmcLcH4QFRVxnV3J1nzB2Q33EZyUpVCZvbbpFoAP7B328o9b0=)
     naver:
       name: naver
       url: https://openapi.naver.com
       header1:
         key: X-Naver-Client-Id
-        value: CwNB3MspiqwJBWYMuUYT
+        value: ENC(Dj6/805wlH4U22sqLqM1UXbF2urG8JWoxRBzgyOKjUA=)
       header2:
         key: X-Naver-Client-Secret
-        value: iuGJFBep9H
+        value: ENC(qhE5zePYojJc9XBLGbqqmbxJp5Pl2evD)
     keywordList:
       name: keyword
       url: http://localhost:8081
