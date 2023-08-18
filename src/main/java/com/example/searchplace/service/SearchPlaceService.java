@@ -4,7 +4,6 @@ import com.example.searchplace.dto.KakaoResponseDto;
 import com.example.searchplace.dto.NaverResponseDto;
 import com.example.searchplace.dto.ParameterDto;
 import com.example.searchplace.dto.SearchResultDto;
-import com.example.searchplace.repository.KeywordRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;

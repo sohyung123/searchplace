@@ -2,14 +2,16 @@ package com.example.searchplace.config;
 
 import org.assertj.core.api.Assertions;
 import org.jasypt.encryption.StringEncryptor;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 class JasyptConfigTest {
 
+    @DisplayName("jasypt 테스트")
     @Test
     void 암호화복호화테스트() {
-
+        //given
         JasyptConfig jasyptConfig = new JasyptConfig("my_jasypt_key12@#");
         StringEncryptor encryptor = jasyptConfig.stringEncryptor();
 
@@ -21,9 +23,10 @@ class JasyptConfigTest {
         String decNaverId = "CwNB3MspiqwJBWYMuUYT";
         String decNaverSecret = "iuGJFBep9H";
 
-        Assertions.assertThat(decKakao.equals(encryptor.decrypt(encKakao)));
-        Assertions.assertThat(decNaverId.equals(encryptor.decrypt(encNaverId)));
-        Assertions.assertThat(decNaverSecret.equals(encryptor.decrypt(encNaverSecret)));
+        //when, then
+        Assertions.assertThat(decKakao).isEqualTo(encryptor.decrypt(encKakao));
+        Assertions.assertThat(decNaverId).isEqualTo(encryptor.decrypt(encNaverId));
+        Assertions.assertThat(decNaverSecret).isEqualTo(encryptor.decrypt(encNaverSecret));
 
     }
 }

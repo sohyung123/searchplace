@@ -36,7 +36,7 @@ public class SaveKeywordService {
     }
 
     //특정 키워드가 호출된적 있는지 확인하는 메서드로, 호출될때마다 AtomicInteger인 newcount를 incrementAndGet()하여 1씩 증가하여 db에 저장
-    private Keyword getTargetKeyword(ParameterDto parameterDto) {
+    public Keyword getTargetKeyword(ParameterDto parameterDto) {
         String keyword = parameterDto.getQuery();
         try {
             Keyword existKeyword = keywordRepository.findByKeywordName(keyword);
