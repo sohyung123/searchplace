@@ -156,10 +156,8 @@ Circuitbreaker는 FeignConfig, RecordFailurePredicate, application.yml에 설정
 searchplace가 일종의 gateway역할을 하고, 사용자들은 모두 searchplace의 api로만 접근하게 하고, keyword 리스트 조회 필요시에는 keyword 프로젝트로 http통신을 보내는 구조로 설계했습니다.
 이와 같은 마이크로서비스아키텍쳐로 구현 후, cloud 환경에 서비스를 구축하게 되면, 확장성을 높일 수 있습니다.
 예를 들어 장소검색 api가 검색 키워드 목록 api보다 더 많이 사용된다면, searchplace 프로젝트에 리소스를 더 많이 할당하여 유연하게 확장성을 높일수 있을것입니다.
-
 반응성 측면에서는, kakao와 naver 검색 api를 동일 키워드로 여러번 검색했을시에 값이 크게 달라지지않은 현상을 확인하여, searchplace 프로젝트내에
 KakaoDataService와 NaverDataService에 cache 처리를 하여 반응성을 향상시켰습니다.
-
 가용성 측면에서는, kakao와 naver의 검색 api가 동시에 장애가 발생할 확률은 거의 없으므로, CircuitBreaker를 통해 장애가 발생한 api를 차단하여
 장소 검색 api는 항상 가용할 수 있도록 설계하여 가용성을 향상시켰습니다.
 
